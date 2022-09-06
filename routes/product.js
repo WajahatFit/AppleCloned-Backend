@@ -18,8 +18,8 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// @desc    Get single project
-// @route   GET /:id
+// @desc    Get single product
+// @route   GET /api/v1/product/:id
 // @access  Public
 
 router.get('/:id', async (req, res, next) => {
@@ -36,7 +36,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // @desc    Create a product
-// @route   POST /
+// @route   POST /api/v1/create
 // @access  Private
 
 // add auth here idk
@@ -46,7 +46,7 @@ router.post('/create', async (req, res, next) => {
   try {
     const product = Product.create({title, description, price: parseInt(price), color, newStock});
     if (!product) {
-      next(new ErrorResponse('An error ocurred while creating the project', 500));
+      next(new ErrorResponse('An error ocurred while creating the product', 500));
     }
     res.status(201).json({ data: product })
   } catch (error) {
@@ -55,7 +55,7 @@ router.post('/create', async (req, res, next) => {
 });
 
 // @desc    Edit a product
-// @route   PUT /:id
+// @route   PUT /api/v1/edit/:id
 // @access  Public
 
 route.put('/edit', (req, res, next) =>{
