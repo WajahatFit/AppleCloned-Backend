@@ -1,11 +1,15 @@
 const router = require('express').Router();
 const ErrorResponse = require('../utils/error');
 const Product = require('../models/Product');
+const { isAuthenticated } = require('../middlewares/jwt');
+const isAdmin = require('../middlewares/isAdmin');
 
 
 // @desc    GET all the products
 // @route   GET /api/v1/
 // @access  Public
+// tested in postman
+
 router.get('/', async (req, res, next) => {
   try {
     const product = await Product.find({});
@@ -21,6 +25,7 @@ router.get('/', async (req, res, next) => {
 // @desc    Get single product
 // @route   GET /api/v1/product/:id
 // @access  Public
+// tested in postman
 
 router.get('/:id', async (req, res, next) => {
   const {id} = req.params;
@@ -36,15 +41,15 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // @desc    Create a product
-// @route   POST /api/v1/create
+// @route   POST /api/v1/products/create
 // @access  Private
+©
 
-// add auth here idk
 
-router.post('/create', async (req, res, next) => {
+router.post('/create', isAuthenticated, isAdmin, async (req, res, next) => {
   const { title, description, price, color, newStock } = req.body;
   try {
-    const product = Product.create({title, description, price: parseInt(price), color, newStock});
+    const product = await Product.create({title, description, price: parseInt(price), color, newStock});
     if (!product) {
       next(new ErrorResponse('An error ocurred while creating the product', 500));
     }
@@ -55,19 +60,47 @@ router.post('/create', async (req, res, next) => {
 });
 
 // @desc    Edit a product
-// @route   PUT /api/v1/edit/:id
-// @access  Public
+// @route   PUT /api/v1/products/edit/:id
+// @access  Private
 
-route.put('/edit', (req, res, next) =>{
+
+router.put('/edit/:id',isAuthenticated, isAdmin, async (req, res, next) =>{
   const { title, description, price, color, newStock } = req.body;
   const {id} = req.params;
+  
   try {
-    const product = Product.findById(id);
-
+    const product = await Product.findById(id);
+    
+    if (!product) {
+      next(new ErrorResponse(`Product not found by id: ${id}`, 404));
+    } else {
+      const updatedProduct = await Product.findByIdAndUpdate(id, { title, description, price, color, newStock }, { new: true });
+      res.status(202).json({ data: updatedProduct })
+    }
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
+
+// @desc    Delete a product
+// @route   DELETE /:id
+// @access  Private
+
+
+router.delete('/:id',isAuthenticated, isAdmin, async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const product = await Product.findById(id);
+    if (!product) {
+      next(new ErrorResponse(`Product not found by id: ${id}`, 404));
+    } else {
+      const deleted = await Product.findByIdAndDelete(id);
+      res.status(202).json({ data: deleted });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 
 

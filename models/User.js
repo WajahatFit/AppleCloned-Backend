@@ -5,7 +5,8 @@ const userSchema = new Schema({
   email: {
     type: String,
     unique: true,
-    required: true
+    required: true,
+    trim: true
   },
   hashedPassword: {
     type: String,
@@ -13,7 +14,8 @@ const userSchema = new Schema({
   },
   username: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   role: {
     type: String,

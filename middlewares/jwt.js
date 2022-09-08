@@ -18,7 +18,9 @@ const isAuthenticated = jwt({
   getToken: getTokenFromHeaders //token
 });
 
+
+
 module.exports = {
-  isAuthenticated
+ isAuthenticated
 }
 

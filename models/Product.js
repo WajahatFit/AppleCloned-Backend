@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const userSchema = new Schema({
+const productSchema = new Schema({
     title: {
       type: String,
       unique: true,
@@ -20,7 +20,7 @@ const userSchema = new Schema({
       required: true
     },
     newStock: {
-        type: bool,
+        type: Boolean,
         required: true
     }
   },
@@ -28,4 +28,4 @@ const userSchema = new Schema({
       timestamps: true
     });
   
-  module.exports = model("User", userSchema);
+  module.exports = model("Product", productSchema);

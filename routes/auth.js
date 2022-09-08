@@ -9,6 +9,7 @@ const saltRounds = 10;
 // @desc    SIGN UP new user
 // @route   POST /api/v1/auth/signup
 // @access  Public
+
 router.post('/signup', async (req, res, next) => {
   const { email, password, username } = req.body;
   // Check if email or password or name are provided as empty string 
@@ -47,6 +48,7 @@ router.post('/signup', async (req, res, next) => {
 // @desc    LOG IN user
 // @route   POST /api/v1/auth/login
 // @access  Public
+
 router.post('/login', async (req, res, next) => { 
   const { email, password } = req.body;
   // Check if email or password are provided as empty string 
@@ -88,6 +90,7 @@ router.post('/login', async (req, res, next) => {
 // @desc    GET logged in user
 // @route   GET /api/v1/auth/me
 // @access  Private
+
 router.get('/me', isAuthenticated, (req, res, next) => {
   // If JWT token is valid the payload gets decoded by the
   // isAuthenticated middleware and made available on `req.payload`
