@@ -3,8 +3,28 @@ const User = require('../models/User');
 const ErrorResponse = require('../utils/error');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const { isAuthenticated } = require('../middlewares/jwt');
+const { isAuthenticated, isAdmin } = require('../middlewares/jwt');
 const saltRounds = 10;
+const fileUploader = require("../config/cloudinary.config");
+
+// POST "/api/upload" => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image URL
+router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
+  // console.log("file is: ", req.file)
+ 
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+  
+  // Get the URL of the uploaded file and send it as a response.
+  // 'fileUrl' can be any name, just make sure you remember to use the same when accessing it on the frontend
+  
+  res.json({ fileUrl: req.file.path });
+});
+
+
+
+
 
 // @desc    SIGN UP new user
 // @route   POST /api/v1/auth/signup
@@ -68,6 +88,7 @@ router.post('/login', async (req, res, next) => {
         const payload = {
           email: userInDB.email,
           username: userInDB.username,
+          role: userInDB.role,
           _id: userInDB._id
         }
         // Use the jwt middleware to create de token

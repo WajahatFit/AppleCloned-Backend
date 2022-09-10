@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const ErrorResponse = require('../utils/error');
 const Product = require('../models/Product');
-const { isAuthenticated } = require('../middlewares/jwt');
-const isAdmin = require('../middlewares/isAdmin');
+const { isAuthenticated, isAdmin } = require('../middlewares/jwt');
+
 
 
 // @desc    GET all the products
@@ -48,6 +48,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/create', isAuthenticated, isAdmin, async (req, res, next) => {
   const { title, description, price, color, newStock } = req.body;
+   const {imageUrl} = req.file.path
+   console.log(imageUrl);
   try {
     const product = await Product.create({title, description, price: parseInt(price), color, newStock});
     if (!product) {
