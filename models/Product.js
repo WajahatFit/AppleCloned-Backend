@@ -5,24 +5,32 @@ const productSchema = new Schema({
     title: {
       type: String,
       unique: true,
-      required: true
+      required:  [true, 'Product must have a title']
     },
     description: {
       type: String,
-      required: true
+      required:  [true, 'Product must have a description']
     },
     price: {
       type: Number,
-      required: true
+      required:  [true, 'Product must have a price']
     },
     color: {
       type: String,
-      required: true
+      required: [true, 'Product must have a color']
     },
     newStock: {
         type: Boolean,
         required: true
-    }
+    }, 
+    images: {
+      type: [String],
+      required: [true, 'Product must have at least  one Image']
+    },
+    category:{
+      type: String,
+      enum: ['Mac', 'iPhone', 'iPad', 'Apple Watch', 'Apple TV', 'Air Pods' ]
+    }  
   },
     {
       timestamps: true

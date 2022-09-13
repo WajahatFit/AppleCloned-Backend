@@ -22,8 +22,10 @@ const userSchema = new Schema({
     enum: ['user', 'admin'],
     default: 'user'
   },
-  image: {
-    type: String
+  profilePic: {
+    type: String,
+    default: 'https://p.kindpng.com/picc/s/421-4212275_transparent-default-avatar-png-avatar-img-png-download.png',
+    required:false
   }
 },
   {

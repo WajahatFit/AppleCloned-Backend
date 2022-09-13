@@ -7,25 +7,6 @@ const { isAuthenticated, isAdmin } = require('../middlewares/jwt');
 const saltRounds = 10;
 const fileUploader = require("../config/cloudinary.config");
 
-// POST "/api/upload" => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image URL
-router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
-  // console.log("file is: ", req.file)
- 
-  if (!req.file) {
-    next(new Error("No file uploaded!"));
-    return;
-  }
-  
-  // Get the URL of the uploaded file and send it as a response.
-  // 'fileUrl' can be any name, just make sure you remember to use the same when accessing it on the frontend
-  
-  res.json({ fileUrl: req.file.path });
-});
-
-
-
-
-
 // @desc    SIGN UP new user
 // @route   POST /api/v1/auth/signup
 // @access  Public
@@ -56,7 +37,7 @@ router.post('/signup', async (req, res, next) => {
       const user = await User.create({ email, hashedPassword, username });
       const publicUser = { // Decide what fields of our user we want to return 
         username: user.username,
-        email: user.email,
+        email: user.email
       }
       res.status(201).json({ data: publicUser });
     }
@@ -64,11 +45,9 @@ router.post('/signup', async (req, res, next) => {
     next(error);
   }
 });
-
 // @desc    LOG IN user
 // @route   POST /api/v1/auth/login
 // @access  Public
-
 router.post('/login', async (req, res, next) => { 
   const { email, password } = req.body;
   // Check if email or password are provided as empty string 
@@ -89,6 +68,7 @@ router.post('/login', async (req, res, next) => {
           email: userInDB.email,
           username: userInDB.username,
           role: userInDB.role,
+          profilePic: userInDB.profilePic,
           _id: userInDB._id
         }
         // Use the jwt middleware to create de token
@@ -107,11 +87,9 @@ router.post('/login', async (req, res, next) => {
     next(error)
   }
 });
-
 // @desc    GET logged in user
 // @route   GET /api/v1/auth/me
 // @access  Private
-
 router.get('/me', isAuthenticated, (req, res, next) => {
   // If JWT token is valid the payload gets decoded by the
   // isAuthenticated middleware and made available on `req.payload`
@@ -120,5 +98,15 @@ router.get('/me', isAuthenticated, (req, res, next) => {
   // previously set as the token payload
   res.status(200).json(req.payload);
 })
+// @desc    Upload a picture to Cloudinary
+// @route   POST /api/v1/auth/upload
+// @access  Private
+router.post("/upload", fileUploader.single("profilePic"), (req, res, next) => {
+  if (!req.file) {
+    next(new ErrorResponse('Error uploading the image', 500));
+    return;
+  }
+  res.json({ fileUrl: req.file.path });
+});
 
 module.exports = router;

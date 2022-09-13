@@ -2,14 +2,10 @@ const router = require('express').Router();
 const ErrorResponse = require('../utils/error');
 const Product = require('../models/Product');
 const { isAuthenticated, isAdmin } = require('../middlewares/jwt');
-
-
-
+const fileUploader = require("../config/cloudinary.config");
 // @desc    GET all the products
 // @route   GET /api/v1/
 // @access  Public
-// tested in postman
-
 router.get('/', async (req, res, next) => {
   try {
     const product = await Product.find({});
@@ -21,14 +17,12 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
-
 // @desc    Get single product
 // @route   GET /api/v1/product/:id
 // @access  Public
-// tested in postman
-
 router.get('/:id', async (req, res, next) => {
   const {id} = req.params;
+  console.log('entering Route', id)
   try {
     const product = await Product.findById(id);
     if (!product) {
@@ -39,19 +33,13 @@ router.get('/:id', async (req, res, next) => {
     next(error);
   }
 });
-
 // @desc    Create a product
 // @route   POST /api/v1/products/create
 // @access  Private
-
-
-
 router.post('/create', isAuthenticated, isAdmin, async (req, res, next) => {
-  const { title, description, price, color, newStock } = req.body;
-   const {imageUrl} = req.file.path
-   console.log(imageUrl);
+  const { title, description, price, color, images, newStock, category } = req.body;
   try {
-    const product = await Product.create({title, description, price: parseInt(price), color, newStock});
+    const product = await Product.create({title, description, price: parseInt(price), color, images, newStock, category});
     if (!product) {
       next(new ErrorResponse('An error ocurred while creating the product', 500));
     }
@@ -60,14 +48,11 @@ router.post('/create', isAuthenticated, isAdmin, async (req, res, next) => {
       next(error);
   }
 });
-
 // @desc    Edit a product
 // @route   PUT /api/v1/products/edit/:id
 // @access  Private
-
-
 router.put('/edit/:id', isAuthenticated, isAdmin, async (req, res, next) =>{
-  const { title, description, price, color, newStock } = req.body;
+  const { title, description, price, color, images, newStock, category } = req.body;
   const {id} = req.params;
   
   try {
@@ -76,19 +61,16 @@ router.put('/edit/:id', isAuthenticated, isAdmin, async (req, res, next) =>{
     if (!product) {
       next(new ErrorResponse(`Product not found by id: ${id}`, 404));
     } else {
-      const updatedProduct = await Product.findByIdAndUpdate(id, { title, description, price, color, newStock }, { new: true });
+      const updatedProduct = await Product.findByIdAndUpdate(id, { title, description, price, color, images, newStock, category }, { new: true });
       res.status(202).json({ data: updatedProduct })
-    }
+    } 
   } catch (error) {
     next(error);
   }
 });
-
 // @desc    Delete a product
 // @route   DELETE /:id
 // @access  Private
-
-
 router.delete('/:id',isAuthenticated, isAdmin, async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -103,11 +85,18 @@ router.delete('/:id',isAuthenticated, isAdmin, async (req, res, next) => {
     next(error);
   }
 });
-
-
-
-
-
-
+// @desc    Upload product image/s
+// @route   POST /api/v1/product/upload
+// @access  Private
+// => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image URL
+router.post("/upload", fileUploader.single("productImageUrl"), (req, res, next) => {
+  if (!req.file) {
+    next(new ErrorResponse("Error uploading image!", 500 ));
+    return;
+  }
+  // Get the URL of the uploaded file and send it as a response.
+  // 'fileUrl' can be any name, just make sure you remember to use the same when accessing it on the frontend
+  res.json({ fileUrl: req.file.path });
+});
 
 module.exports = router;

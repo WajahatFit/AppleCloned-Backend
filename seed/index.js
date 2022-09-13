@@ -11,33 +11,200 @@ const products = [
     description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
     price:2005,
     color: 'blue',
-    newStock: true
-
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
   },
   {
-    title: "Apple Mac 23",
+    title: "Apple Mac 4",
     description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
-    price:200,
+    price:2005,
     color: 'blue',
-    newStock: false
-
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
   },
   {
-    title: "Apple Mac 2",
+    title: "Apple Mac 4",
     description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
-    price:29,
+    price:2005,
     color: 'blue',
-    newStock: true
-
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
   },
   {
-    title: "Apple Mac 99",
+    title: "Apple Mac 4",
     description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
-    price:23,
+    price:2005,
     color: 'blue',
-    newStock: false
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
 
-  }
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
+  {
+    title: "Apple Mac 4",
+    description: "Apple Mac is an application to help people keep track of the tasks they have yet to finish",
+    price:2005,
+    color: 'blue',
+    newStock: true,
+    images:'https://res.cloudinary.com/drdsjj7w0/image/upload/v1662824780/apple-clone/raoz4akbgzb4bev2qss3.png',
+    category:'Mac'
+  },
 ]
 
 mongoose.connect(process.env.MONGO_URL)
