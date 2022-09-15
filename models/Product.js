@@ -1,39 +1,41 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const productSchema = new Schema({
+const productSchema = new Schema(
+  {
     title: {
       type: String,
       unique: true,
-      required:  [true, 'Product must have a title']
+      required: [true, "Product must have a title"],
     },
     description: {
       type: String,
-      required:  [true, 'Product must have a description']
+      required: [true, "Product must have a description"],
     },
     price: {
       type: Number,
-      required:  [true, 'Product must have a price']
+      required: [true, "Product must have a price"],
     },
     color: {
       type: String,
-      required: [true, 'Product must have a color']
+      required: [true, "Product must have a color"],
     },
     newStock: {
-        type: Boolean,
-        required: true
-    }, 
+      type: Boolean,
+      required: true,
+    },
     images: {
       type: [String],
-      required: [true, 'Product must have at least  one Image']
+      required: [true, "Product must have at least  one Image"],
     },
-    category:{
+    category: {
       type: String,
-      enum: ['Mac', 'iPhone', 'iPad', 'Apple Watch', 'Apple TV', 'Air Pods' ]
-    }  
+      enum: ["Mac", "iPhone", "iPad", "Apple Watch", "Apple TV", "Air Pods"],
+    },
   },
-    {
-      timestamps: true
-    });
-  
-  module.exports = model("Product", productSchema);
+  {
+    timestamps: true,
+  }
+);
+
+module.exports = model("Product", productSchema);
