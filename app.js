@@ -10,7 +10,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const productRouter = require("./routes/product");
-
+const cartRouter = require("./routes/cart");
 const app = express();
 
 // cookies and loggers
@@ -33,6 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", indexRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);
+app.use("/api/v1/cart", cartRouter);
 app.use(errorHandler);
 
 // catch 404 and forward to error handler

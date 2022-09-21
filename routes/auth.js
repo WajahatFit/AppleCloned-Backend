@@ -51,12 +51,12 @@ router.post("/signup", async (req, res, next) => {
     } else {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
-      const user = await User.create({ email, hashedPassword, username, profilePic });
+      const user = await User.create({ email, hashedPassword, username });
       const publicUser = {
         // Decide what fields of our user we want to return
         username: user.username,
         email: user.email,
-        profilePic: user.profilePic
+        role: user.role
       };
       res.status(201).json({ data: publicUser });
     }
