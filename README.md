@@ -1,4 +1,4 @@
-# Project's name REST API
+# Apple Store Clone REST API
 
 ## Description
 
@@ -46,10 +46,28 @@ Users in the database have the following properties:
 
 ```js
 {
-  "username": String,
-  "email": String,
-  "hashedPassword": String
-}
+  email: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  hashedPassword: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
+  }
+},
+  {
+    timestamps: true
+  }
 ```
 
 ### Products
@@ -58,13 +76,31 @@ Products in the database have the following properties:
 
 ```js
 {
-  "title": String,
-  "description": String,
-  "price": Number,
-  "color": String,
-  "newStock": bool,
-
-}
+    title: {
+      type: String,
+      unique: true,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true
+    },
+    color: {
+      type: String,
+      required: true
+    },
+    newStock: {
+        type: bool,
+        required: true
+    }
+  },
+    {
+      timestamps: true
+    };
 ```
 
 ---
@@ -82,6 +118,6 @@ Products in the database have the following properties:
 ## Useful links
 
 - [Presentation slides]()
-- [Frontend repository]()
+- [Frontend repository](https://github.com/WajahatFit/Apple-Clone-Front-End)
 - [Frontend deploy]()
 - [Deployed REST API]()
