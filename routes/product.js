@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 // @desc    Get single product
-// @route   GET /api/v1/product/:id
+// @route   GET /api/v1/products/:id
 // @access  Public
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
@@ -64,15 +64,14 @@ router.post("/create", isAuthenticated, async (req, res, next) => {
 // @route   PUT /api/v1/products/edit/:id
 // @access  Private
 router.put("/edit/:id", isAuthenticated, isAdmin, async (req, res, next) => {
+  const { id } = req.params;
   const { title, description, price, color, images, newStock, category } =
     req.body;
-  const { id } = req.params;
-
   try {
     const product = await Product.findById(id);
-
     if (!product) {
       next(new ErrorResponse(`Product not found by id: ${id}`, 404));
+      return;
     } else {
       const updatedProduct = await Product.findByIdAndUpdate(
         id,

@@ -20,10 +20,6 @@ app.use(
   })
 );
 app.set("trust proxy", 1);
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   next();
-// });
 
 app.use(logger("dev"));
 app.use(express.json());

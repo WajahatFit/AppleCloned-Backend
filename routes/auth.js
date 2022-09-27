@@ -56,7 +56,7 @@ router.post("/signup", async (req, res, next) => {
         // Decide what fields of our user we want to return
         username: user.username,
         email: user.email,
-        role: user.role
+        role: user.role,
       };
       res.status(201).json({ data: publicUser });
     }

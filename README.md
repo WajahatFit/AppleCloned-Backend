@@ -1,8 +1,8 @@
-# Apple Store Clone REST API
+# Orangee Store REST API
 
 ## Description
 
-This is a the backend repository for the React application `Apple Store Clone`.
+This is a the backend repository for the React application `Orangee Store`.
 
 ---
 
@@ -75,32 +75,36 @@ Users in the database have the following properties:
 Products in the database have the following properties:
 
 ```js
-{
-    title: {
+title: {
       type: String,
-      unique: true,
-      required: true
+      required: [true, "Product must have a title"],
     },
     description: {
       type: String,
-      required: true
+      required: [true, "Product must have a description"],
     },
     price: {
       type: Number,
-      required: true
+      required: [true, "Product must have a price"],
     },
     color: {
       type: String,
-      required: true
+      required: [true, "Product must have a color"],
     },
     newStock: {
-        type: bool,
-        required: true
-    }
-  },
-    {
-      timestamps: true
-    };
+      type: Boolean
+    },
+    images: {
+      type: [String],
+      required: [true, "Product must have at least  one Image"],
+    },
+    category: {
+      type: String,
+      enum: ["Mac", "iPhone", "iPad", "Apple Watch", "Apple TV", "Air Pods"],
+    },
+  {
+    timestamps: true,
+  };
 ```
 
 ---
@@ -117,7 +121,7 @@ Products in the database have the following properties:
 
 ## Useful links
 
-- [Presentation slides]()
+- [Presentation slides](https://www.canva.com/design/DAFMet8b2DU/yAa40LmsJSJXSG_ZhM-CCw/edit?utm_content=DAFMet8b2DU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [Frontend repository](https://github.com/WajahatFit/Apple-Clone-Front-End)
 - [Frontend deploy]()
 - [Deployed REST API]()

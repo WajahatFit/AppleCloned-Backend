@@ -5,7 +5,6 @@ const productSchema = new Schema(
   {
     title: {
       type: String,
-      unique: true,
       required: [true, "Product must have a title"],
     },
     description: {
@@ -21,8 +20,7 @@ const productSchema = new Schema(
       required: [true, "Product must have a color"],
     },
     newStock: {
-      type: Boolean,
-      required: true,
+      type: Boolean
     },
     images: {
       type: [String],
